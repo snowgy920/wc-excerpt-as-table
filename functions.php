@@ -29,7 +29,6 @@ function porto_child_init() {
 	// 	return 20;
 	// });
 	add_filter('woocommerce_short_description', 'porto_child_excerpt_table');
-	add_action( 'woocommerce_after_single_variation', 'porto_child_show_bulk_price', 10, 2);
 }
 
 function porto_child_excerpt_table($description) {
