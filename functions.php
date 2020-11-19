@@ -23,10 +23,16 @@ function porto_child_js() {
 	wp_enqueue_script( 'porto-child-js' );
 }
 
-add_action( 'init', 'porto_child_init', 1 );
+add_action( 'init', 'porto_child_init', 100 );
 function porto_child_init() {
-	add_filter( 'porto_woocommerce_short_description_length', function(){
-		return 100;
-	});
+	// add_filter( 'porto_woocommerce_short_description_length', function(){
+	// 	return 20;
+	// });
+	add_filter('woocommerce_short_description', 'porto_child_excerpt_table');
 	add_action( 'woocommerce_after_single_variation', 'porto_child_show_bulk_price', 10, 2);
+}
+
+function porto_child_excerpt_table($description) {
+	$content = get_the_excerpt();
+	return $content;
 }

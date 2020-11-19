@@ -12,3 +12,14 @@ Tags: woocommerce, corporate, ecommerce, responsive, blue, black, green, white, 
 */
 
 /*************** ADD YOUR CUSTOM CSS HERE  ***************/
+ul.products li.product-col .description {
+    border: 1px solid;
+    padding: 10px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+ul.products li.product-col .description ul {
+    margin: 0;
+    text-align: left;
+}
