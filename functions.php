@@ -21,7 +21,15 @@ function porto_child_init() {
 	add_filter('woocommerce_short_description', 'porto_child_excerpt_table');
 	add_filter('woocommerce_loop_add_to_cart_link', function($link){
 		global $porto_settings;
-		return $porto_settings['catalog-readmore'] ? $link : '';
+		$catalog_mode   = false;
+		if ( $porto_settings['catalog-enable'] ) {
+			if ( $porto_settings['catalog-admin'] || ( ! $porto_settings['catalog-admin'] && ! ( current_user_can( 'administrator' ) && is_user_logged_in() ) ) ) {
+				if ( ! $porto_settings['catalog-cart'] ) {
+					$catalog_mode = true;
+				}
+			}
+		}
+		return $catalog_mode && !$porto_settings['catalog-readmore'] ? '' : $link;
 	});
 }
 
