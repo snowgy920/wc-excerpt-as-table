@@ -25,10 +25,11 @@ function porto_child_js() {
 
 add_action( 'init', 'porto_child_init', 100 );
 function porto_child_init() {
-	// add_filter( 'porto_woocommerce_short_description_length', function(){
-	// 	return 20;
-	// });
 	add_filter('woocommerce_short_description', 'porto_child_excerpt_table');
+	add_filter('woocommerce_loop_add_to_cart_link', function($link){
+		global $porto_settings;
+		return $porto_settings['catalog-readmore'] ? $link : '';
+	});
 }
 
 function porto_child_excerpt_table($description) {
